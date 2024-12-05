@@ -1,0 +1,1123 @@
+ 1. bank
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+private:
+    string Name;
+    int accountNumber;
+    double balanceAmount;
+
+public:
+    
+    BankAccount(string name = "", int x = 0, double balance = 0) {
+        Name = name;
+        accountNumber = x;
+        balanceAmount = balance;
+    }
+
+    
+    void deposit(double amount) {
+        if (amount > 0) {
+            balanceAmount += amount;
+            cout << "\nAmount deposited successfully.";
+        } else {
+            cout << "\nInvalid deposit amount.";
+        }
+    }
+
+    
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balanceAmount) {
+            balanceAmount -= amount;
+            cout << "\nAmount withdrawn successfully.";
+        } else {
+            cout << "\nInvalid withdraw amount or insufficient balance.";
+        }
+    }
+
+    
+    void display() 
+    {
+        cout << Name;
+        for (int i = Name.length(); i < 15; i++) cout<<' ' ; 
+
+        cout << accountNumber;
+        int accountNumberLength = to_string(accountNumber).length();
+        for (int i = accountNumberLength; i < 15; i++) cout << ' ';
+
+        cout << balanceAmount << endl;
+    }
+
+    
+    int getAccountNumber()
+     {
+        return accountNumber;
+    }
+};
+
+int main() {
+    int MAX_ACCOUNTS = 5;
+    BankAccount accounts[MAX_ACCOUNTS];
+    int accountCount = 0;
+    int choice;
+
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Create New Account\n";
+        cout << "2. Deposit\n";
+        cout << "3. Withdraw\n";
+        cout << "4. Display All Account Details\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                if (accountCount < MAX_ACCOUNTS) {
+                    string name;
+                    int x;
+                    double balance;
+
+                    cout << "\nEnter customer name: ";
+                    cin.ignore(); 
+                    getline(cin, name);
+                    cout << "Enter account number: ";
+                    cin >> x;
+                    cout << "Enter initial balance: ";
+                    cin >> balance;
+
+                    accounts[accountCount] = BankAccount(name, x, balance);
+                    accountCount++;
+                    cout << "\nAccount created successfully.";
+                } else {
+                    cout << "\nMaximum account limit reached.";
+                }
+                break;
+            }
+            case 2: {
+                int ac_no;
+                cout << "\nEnter account number: ";
+                cin >> ac_no;
+
+                int flag = 0; 
+                for (int i = 0; i < accountCount; ++i) {
+                    if (accounts[i].getAccountNumber() == ac_no) {
+                        double depositAmount;
+                        cout << "Enter amount to deposit: ";
+                        cin >> depositAmount;
+                        accounts[i].deposit(depositAmount);
+                        flag = 1; 
+                        break;
+                    }
+                }
+                if (flag == 0) {
+                    cout << "\nAccount not found.";
+                }
+                break;
+            }
+            case 3: {
+                int ac_no;
+                cout << "\nEnter account number: ";
+                cin >> ac_no;
+
+                int flag = 0;
+                for (int i = 0; i < accountCount; ++i) {
+                    if (accounts[i].getAccountNumber() == ac_no) {
+                        double withdrawAmount;
+                        cout << "Enter amount to withdraw: ";
+                        cin >> withdrawAmount;
+                        accounts[i].withdraw(withdrawAmount);
+                        flag = 1; 
+                        break;
+                    }
+                }
+                if (flag == 0) {
+                    cout << "\nAccount not found.";
+                }
+                break;
+            }
+            case 4: {
+                cout << "\nName            Account Number    Balance\n";
+                cout << "--------------- --------------- ---------------\n";
+                for (int i = 0; i < accountCount; ++i) {
+                    accounts[i].display();
+                }
+                break;
+            }
+            case 5:
+                cout << "\nProgram finished.";
+                break;
+            default:
+            cout << "\nInvalid choice. Please try again.";
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.book
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+private:
+    string Name;
+    int accountNumber;
+    double balanceAmount;
+
+public:
+    
+    BankAccount(string name = "", int x = 0, double balance = 0) {
+        Name = name;
+        accountNumber = x;
+        balanceAmount = balance;
+    }
+
+    
+    void deposit(double amount) {
+        if (amount > 0) {
+            balanceAmount += amount;
+            cout << "\nAmount deposited successfully.";
+        } else {
+            cout << "\nInvalid deposit amount.";
+        }
+    }
+
+    
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balanceAmount) {
+            balanceAmount -= amount;
+            cout << "\nAmount withdrawn successfully.";
+        } else {
+            cout << "\nInvalid withdraw amount or insufficient balance.";
+        }
+    }
+
+    
+    void display() 
+    {
+        cout << Name;
+        for (int i = Name.length(); i < 15; i++) cout<<' ' ; 
+
+        cout << accountNumber;
+        int accountNumberLength = to_string(accountNumber).length();
+        for (int i = accountNumberLength; i < 15; i++) cout << ' ';
+
+        cout << balanceAmount << endl;
+    }
+
+    
+    int getAccountNumber()
+     {
+        return accountNumber;
+    }
+};
+
+int main() {
+    int MAX_ACCOUNTS = 5;
+    BankAccount accounts[MAX_ACCOUNTS];
+    int accountCount = 0;
+    int choice;
+
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Create New Account\n";
+        cout << "2. Deposit\n";
+        cout << "3. Withdraw\n";
+        cout << "4. Display All Account Details\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                if (accountCount < MAX_ACCOUNTS) {
+                    string name;
+                    int x;
+                    double balance;
+
+                    cout << "\nEnter customer name: ";
+                    cin.ignore(); 
+                    getline(cin, name);
+                    cout << "Enter account number: ";
+                    cin >> x;
+                    cout << "Enter initial balance: ";
+                    cin >> balance;
+
+                    accounts[accountCount] = BankAccount(name, x, balance);
+                    accountCount++;
+                    cout << "\nAccount created successfully.";
+                } else {
+                    cout << "\nMaximum account limit reached.";
+                }
+                break;
+            }
+            case 2: {
+                int ac_no;
+                cout << "\nEnter account number: ";
+                cin >> ac_no;
+
+                int flag = 0; 
+                for (int i = 0; i < accountCount; ++i) {
+                    if (accounts[i].getAccountNumber() == ac_no) {
+                        double depositAmount;
+                        cout << "Enter amount to deposit: ";
+                        cin >> depositAmount;
+                        accounts[i].deposit(depositAmount);
+                        flag = 1; 
+                        break;
+                    }
+                }
+                if (flag == 0) {
+                    cout << "\nAccount not found.";
+                }
+                break;
+            }
+            case 3: {
+                int ac_no;
+                cout << "\nEnter account number: ";
+                cin >> ac_no;
+
+                int flag = 0;
+                for (int i = 0; i < accountCount; ++i) {
+                    if (accounts[i].getAccountNumber() == ac_no) {
+                        double withdrawAmount;
+                        cout << "Enter amount to withdraw: ";
+                        cin >> withdrawAmount;
+                        accounts[i].withdraw(withdrawAmount);
+                        flag = 1; 
+                        break;
+                    }
+                }
+                if (flag == 0) {
+                    cout << "\nAccount not found.";
+                }
+                break;
+            }
+            case 4: {
+                cout << "\nName            Account Number    Balance\n";
+                cout << "--------------- --------------- ---------------\n";
+                for (int i = 0; i < accountCount; ++i) {
+                    accounts[i].display();
+                }
+                break;
+            }
+            case 5:
+                cout << "\nProgram finished.";
+                break;
+            default:
+            cout << "\nInvalid choice. Please try again.";
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.complex
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+private:
+    float real, img;
+
+public:
+    Complex()
+    {
+        real = 0;
+        img = 0;
+    }
+    void accept()
+    {
+        cout << "Real: ";
+        cin >> real;
+        cout << "Imaginary: ";
+        cin >> img;
+    }
+    void display()
+    {
+        cout << "Complex number is: ";
+        cout << real << "+" << img << "i" << "\n";
+    }
+    Complex(float a, float b)
+    {
+        real = a;
+        img = b;
+    }
+    friend Complex operator+(Complex c1, Complex c2)
+    {
+        c1.real = c1.real + c2.real;
+        c1.img = c1.img + c2.img;
+        return c1;
+    }
+
+    friend Complex operator-(Complex c1, Complex c2)
+    {
+        c1.real = c1.real - c2.real;
+        c1.img = c1.img - c2.img;
+        return c1;
+    }
+    Complex operator*(Complex c2);
+    Complex operator/(Complex c2);
+};
+
+Complex Complex::operator*(Complex c2)
+{
+    Complex c3;
+    c3.real = (real * c2.real) - (img * c2.img);
+    c3.img = (real * c2.img) + (img * c2.real);
+    return c3;
+}
+
+Complex Complex::operator/(Complex c2)
+{
+    Complex c3;
+    c3.real = ((real * c2.real) + (img * c2.img)) / ((c2.real * c2.real) + (c2.img * c2.img));
+    c3.img = ((img * c2.real) - (real * c2.img)) / ((c2.real * c2.real) + (c2.img * c2.img));
+    return c3;
+}
+
+int main()
+{
+    int ch;
+    Complex c3;
+    Complex c4;
+    Complex c5;
+
+    cout << "Enter the first complex number:\n";
+    c4.accept();
+    cout << "Enter the second complex number:\n";
+    c5.accept();
+    cout << "1st ";
+    c4.display();
+    cout << "\n";
+    cout << "2nd ";
+    c5.display();
+    cout << "\n";
+
+    do
+    {
+        cout << "\n1. Addition" << "\n"
+             << "2. Subtraction" << "\n"
+             << "3. Multiplication" << "\n"
+             << "4. Division" << "\n";
+        cout << "\nEnter your choice: ";
+        cin >> ch;
+
+        switch (ch)
+        {
+        case 1:
+            cout << "Addition: ";
+            c3 = operator+(c4, c5);
+            c3.display();
+            cout << "\n";
+            break;
+        case 2:
+            cout << "Subtraction: ";
+            c3 = operator-(c4, c5);
+            c3.display();
+            cout << "\n";
+            break;
+        case 3:
+            cout << "Multiplication: ";
+            c3 = c4 * c5;
+            c3.display();
+            cout << "\n";
+            break;
+        case 4:
+            cout << "Division:";
+            c3 = c4.operator/(c5);
+            c3.display();
+            cout << "\n";
+            break;
+        default:
+            cout << "EXIT";
+        }
+    } while (ch <= 4);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.hospital
+       #include <iostream>
+using namespace std;
+
+class Person {
+public:
+    int id_no;
+    long mobile_no;
+    char name[50];
+
+    // Virtual functions to allow polymorphism
+    virtual void infoget() {
+        cout << "\nEnter the id_number:\t";
+        cin >> id_no;
+        cout << "\nEnter the name:\t";
+        cin.ignore();
+        cin.getline(name, 50);
+        cout << "\nEnter the mobile number:\t";
+        cin >> mobile_no;
+    }
+
+    // Virtual display function
+    virtual void display() {
+        cout << "\nID Number:\t" << id_no;
+        cout << "\nName:\t" << name;
+        cout << "\nMobile Number:\t" << mobile_no;
+    }
+};
+
+class Doctor : public Person {
+public:
+    char specialty[50];
+    int yearofexp;
+
+    // Overriding the infoget function to get doctor-specific details
+    void infoget() override {
+        Person::infoget(); // Call base class function to get common info
+        cout << "\nEnter the specialty:\t";
+        cin.ignore();
+        cin.getline(specialty, 50);
+        cout << "\nEnter the year of experience:\t";
+        cin >> yearofexp;
+    }
+
+    // Overriding the display function for doctor-specific details
+    void display() override {
+        Person::display(); // Call base class display for common info
+        cout << "\nSpecialty:\t" << specialty;
+        cout << "\nYears of Experience:\t" << yearofexp;
+    }
+};
+
+class Nurse : public Person {
+public:
+    char shifttime[20];
+    int patient_no;
+
+    // Overriding the infoget function to get nurse-specific details
+    void infoget() override {
+        Person::infoget(); // Call base class function to get common info
+        cout << "\nEnter the shifttime (morning/night):\t";
+        cin.ignore();
+        cin.getline(shifttime, 20);
+        cout << "\nEnter the number of patients assigned:\t";
+        cin >> patient_no;
+    }
+
+    // Overriding the display function for nurse-specific details
+    void display() override {
+        Person::display(); // Call base class display for common info
+        cout << "\nShift Time:\t" << shifttime;
+        cout << "\nNumber of Patients Assigned:\t" << patient_no;
+    }
+};
+
+class AdminStaff : public Person {
+public:
+    char role[50];
+
+    // Overriding the infoget function to get admin staff-specific details
+    void infoget() override {
+        Person::infoget(); // Call base class function to get common info
+        cout << "\nEnter your role:\t";
+        cin.ignore();
+        cin.getline(role, 50);
+    }
+
+    // Overriding the display function for admin staff-specific details
+    void display() override {
+        Person::display(); // Call base class display for common info
+        cout << "\nRole:\t" << role;
+    }
+};
+
+int main() {
+    Doctor doc[10];
+    Nurse nurse[20];
+    AdminStaff admin[20];
+    int i;
+    int ch;
+    do {
+        cout << "\nEnter your choice:\t";
+        cout << "\n1. Doctor information";
+        cout << "\n2. Nurse information";
+        cout << "\n3. Administrative staff information";
+        cout << "\n4. Display Doctor information";
+        cout << "\n5. Display Nurse information";
+        cout << "\n6. Display Administrative staff information";
+        cout << "\n7. Exit:\t";
+        cin >> ch;
+
+        switch(ch) {
+            case 1:
+                int n;
+                cout<<"\nEnter the number of doctor:\t";
+                cin>>n;
+                for(i=0;i<n;i++)
+                {
+                    doc[i].infoget();
+                }
+                 
+                break;
+            case 2:
+                cout<<"\nEnter the number of nurse:\t";
+                cin>>n;
+                for(i=0;i<n;i++)
+                {
+                    nurse[i].infoget();
+                }
+                 
+                break;
+            case 3:
+                cout<<"\nEnter the number of doctor:\t";
+                cin>>n;
+                for(i=0;i<n;i++)
+                {
+                    admin[i].infoget();
+                }
+                 
+                break;
+            case 4:
+                for(i=0;i<n;i++)
+                {
+                   doc[i].display();
+                }
+                
+                break;
+            case 5:
+                 for(i=0;i<n;i++)
+                 {
+                   nurse[i].display();
+                 }
+                
+                break;
+            case 6:
+                for(i=0;i<n;i++)
+                {
+                   admin[i].display();
+                }
+                break;
+            case 7:
+                cout << "\nExiting....!";
+                break;
+            default:
+                cout << "\nInvalid choice!";
+                break;
+        }
+    } while (ch != 7);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. student marks   
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student {
+public:
+    string name;
+    int roll_no;
+    string subject;
+
+    virtual void accept() {
+        cout << "Enter name: ";
+        cin >> name;
+        cout << "Enter roll number: ";
+        cin >> roll_no;
+        cout << "Enter subject: ";
+        cin >> subject;
+    }
+
+    virtual void display() {
+        cout << roll_no << "\t" << name << "\t" << subject << endl;
+    }
+};
+
+class SubjectStudent : public Student {
+public:
+    string subject_code;
+    int internal_marks;
+    int university_marks;
+
+    void accept() override {
+        Student::accept();
+        cout << "Enter subject code: ";
+        cin >> subject_code;
+        cout << "Enter internal marks (out of 40): ";
+        cin >> internal_marks;
+        cout << "Enter university examination marks (out of 60): ";
+        cin >> university_marks;
+    }
+
+    void display() override {
+        Student::display();
+        int total_marks = internal_marks + university_marks;
+        cout << "\t" << subject_code << "\t\t" << internal_marks << "\t\t" << university_marks << "\t\t" << total_marks << endl;
+    }
+};
+
+class StudentData {
+public:
+    SubjectStudent* students[10];
+    int student_count = 0;
+
+    void build_master_table(int n) {
+        for (int i = 0; i < n; ++i) {
+            cout << "Entering details for student " << (i + 1) << ":" << endl;
+            students[student_count] = new SubjectStudent();
+            students[student_count]->accept();
+            student_count++;
+        }
+    }
+
+    void list_table() {
+        cout << "Roll No\tName\tSubject\tSubject Code\tInternal Marks\tUniversity Marks\tTotal Marks" << endl;
+        for (int i = 0; i < student_count; ++i) {
+            students[i]->display();
+        }
+    }
+
+    void insert_entry() {
+        if (student_count < 10) {
+            cout << "Inserting a new student entry:" << endl;
+            students[student_count] = new SubjectStudent();
+            students[student_count]->accept();
+            student_count++;
+        } else {
+            cout << "Cannot insert, table is full!" << endl;
+        }
+    }
+
+    void delete_entry(int rollNo) {
+        bool found = false;
+        for (int i = 0; i < student_count; ++i) {
+            if (students[i]->roll_no == rollNo) {
+                delete students[i];
+                for (int j = i; j < student_count - 1; ++j) {
+                    students[j] = students[j + 1];
+                }
+                student_count--;
+                cout << "Entry with roll number " << rollNo << " deleted." << endl;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cout << "Roll number " << rollNo << " not found." << endl;
+        }
+    }
+
+    void edit_entry(int rollNo) {
+        bool found = false;
+        for (int i = 0; i < student_count; ++i) {
+            if (students[i]->roll_no == rollNo) {
+                cout << "Editing details for roll number " << rollNo << ":" << endl;
+                students[i]->accept();
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cout << "Roll number " << rollNo << " not found." << endl;
+        }
+    }
+
+    void search_entry(int rollNo) {
+        bool found = false;
+        for (int i = 0; i < student_count; ++i) {
+            if (students[i]->roll_no == rollNo) {
+                cout << "Record found:" << endl;
+                cout << "Roll No\tName\tSubject\tSubject Code\tInternal Marks\tUniversity Marks\tTotal Marks" << endl;
+                students[i]->display();
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cout << "Roll number " << rollNo << " not found." << endl;
+        }
+    }
+
+    ~StudentData() {
+        for (int i = 0; i < student_count; ++i) {
+            delete students[i];
+        }
+    }
+};
+
+int main() {
+    StudentData data;
+    int choice, n, rollNo;
+
+    do {
+        cout << "\n**Master Table Operations**\n";
+        cout << "1. Build Master Table\n";
+        cout << "2. List Table\n";
+        cout << "3. Insert New Entry\n";
+        cout << "4. Delete Entry\n";
+        cout << "5. Edit Entry\n";
+        cout << "6. Search for Record\n";
+        cout << "7. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter number of students to add: ";
+                cin >> n;
+                data.build_master_table(n);
+                break;
+            case 2:
+                data.list_table();
+                break;
+            case 3:
+                data.insert_entry();
+                break;
+            case 4:
+                cout << "Enter roll number to delete: ";
+                cin >> rollNo;
+                data.delete_entry(rollNo);
+                break;
+            case 5:
+                cout << "Enter roll number to edit: ";
+                cin >> rollNo;
+                data.edit_entry(rollNo);
+                break;
+            case 6:
+                cout << "Enter roll number to search: ";
+                cin >> rollNo;
+                data.search_entry(rollNo);
+                break;
+            case 7:
+                cout << "Exiting program." << endl;
+                break;
+            default:
+                cout << "Invalid choice, please try again." << endl;
+        }
+    } while (choice != 7);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+6. selection sort 
+#include <iostream>
+using namespace std;
+
+// Template for selection sort
+template <typename T>
+void selectionSort(T arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        // Swap the minimum element with the current element
+        T temp = arr[minIndex];
+        arr[minIndex] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+// Template function to print array
+template <typename T>
+void printArray(T arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+// Template function to get array input from user
+template <typename T>
+void getArrayInput(T arr[], int size) {
+    cout << "Enter " << size << " elements:" << endl;
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+}
+
+int main() {
+    int intSize, floatSize;
+
+    // Integer array input
+    cout << "Enter the number of elements in the integer array: ";
+    cin >> intSize;
+    int *intArr = new int[intSize];
+    getArrayInput(intArr, intSize);
+
+    cout << "Original integer array: ";
+    printArray(intArr, intSize);
+
+    selectionSort(intArr, intSize);
+    cout << "Sorted integer array: ";
+    printArray(intArr, intSize);
+
+    // Float array input
+    cout << "\nEnter the number of elements in the float array: ";
+    cin >> floatSize;
+    float *floatArr = new float[floatSize];
+    getArrayInput(floatArr, floatSize);
+
+    cout << "Original float array: ";
+    printArray(floatArr, floatSize);
+
+    selectionSort(floatArr, floatSize);
+    cout << "Sorted float array: ";
+    printArray(floatArr, floatSize);
+
+    // Free dynamically allocated memory
+    delete[] intArr;
+    delete[] floatArr;
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. int float sort
+#include <iostream>
+using namespace std;
+template<class t>
+void selection_sort(t a[],int n)
+{
+    int i,j,min;
+    t temp;
+    for(i=0;i<n-1;i++)
+    {
+       min=i;
+       
+        for(j=i+1;j<n;j++)
+        {
+            if(a[j]<a[min])
+            {
+                min=j;
+            }
+        }
+        if(min!= i)
+        {
+            temp=a[i];
+            a[i]=a[min];
+            a[min]=temp;
+        }
+    }
+    
+    cout<<"sorted array"<<endl;
+    for(i=0;i<n;i++)
+    {
+        cout<<a[i]<<endl;
+    }
+
+}
+int main()
+{
+ int int_size,i,float_size,ch,choice;
+ int int_ar[10];
+ float float_ar[10];
+ do
+ {
+  cout<<"1.int array sorting\n2.float array sorting";
+  cin>>ch;
+  switch(ch)
+  {
+  case 1:
+        cout<<"enter size:";
+        cin>>int_size;
+        cout<<"enter array";
+        for(i=0;i<int_size;i++)
+        {
+         cin>>int_ar[i];
+        }
+         selection_sort(int_ar,int_size);
+         break;
+    case 2:
+        cout<<"enter size:";
+        cin>>float_size;
+        cout<<"enter array";
+        for(i=0;i<float_size;i++)
+        {
+         cin>>float_ar[i];
+        }
+         selection_sort(float_ar,float_size);
+         break;
+  }
+        cout<<"1 to continue";
+        cin>>choice;
+ }while(choice==1);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+7.exception handling
+#include <iostream>
+using namespace std;
+class tv
+{
+public:
+	int model_no,screen_size,price;
+	tv()
+	{
+		model_no=0;
+		screen_size=0;
+		price=0;
+	}
+	friend istream & operator >>(istream & in,tv &t)
+	{
+		cout<<"enter model number:";
+		cin>>t.model_no;
+		if(t.model_no<1000||t.model_no>9999)
+		{
+			throw 1;
+		}
+		cout<<"enter screen size:";
+		cin>>t.screen_size;
+		if(t.screen_size<12||t.screen_size>70)
+		{
+			throw 2;
+		}
+		cout<<"enter price:";
+		cin>>t.price;
+		if(t.price<0||t.price>5000)
+		{
+			throw 3;
+		}
+		return in;
+	}
+	friend ostream & operator <<(ostream & out,const tv &t)
+	{
+		out<<"model number:"<<t.model_no<<endl;
+		out<<"screen_size :"<<t.screen_size<<endl;
+        out<<"price:"<<t.price<<endl;
+        return out;
+	}
+	void reset()
+	{
+	    model_no=0;
+	    screen_size=0;
+	    price=0;
+	}
+};
+int main()
+{
+	tv t;
+	try
+	{
+	    cin>>t;
+	}
+	catch(int i)
+	{
+	    cout<<"invalid input";
+	    t.reset();
+	}
+	cout<<"details"<<endl<<t<<endl;
+   	
+
+	return 0;
+}
